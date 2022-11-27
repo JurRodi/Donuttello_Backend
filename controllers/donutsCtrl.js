@@ -14,6 +14,21 @@ const getAllDonuts = (req, res) => {
     });
 };
 
+const createDonut = (req, res) => {
+    Donut.create(req.body, (err, newDonut) => {
+        if (err) return console.log(err);
+        let response = {
+            status: "success",
+            message: "New donut created",
+            data: {
+                donut: newDonut
+            }
+        }
+        res.json(response);
+    });
+};
+
 module.exports = {
-    getAllDonuts
+    getAllDonuts,
+    createDonut
 }
