@@ -2,7 +2,6 @@ const Mongooose = require('mongoose');
 const Schema = Mongooose.Schema;
 
 const DonutSchema = new Schema({
-    id: {type: Number, required: true},
     color: {type: String, required: true},
     topping: {type: String, required: true},
     logo: {type: String, required: true},
