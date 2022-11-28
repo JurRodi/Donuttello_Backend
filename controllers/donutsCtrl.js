@@ -42,8 +42,23 @@ const deleteDonut = (req, res) => {
     });
 };
 
+const updateDonut = (req, res) => {
+    Donut.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, updatedDonut) => {
+        if (err) return console.log(err);
+        let response = {
+            status: "success",
+            message: "Donut updated successfully with id: " + req.params.id,
+            data: {
+                donut: updatedDonut
+            }
+        }
+        res.json(response);
+    });
+};
+
 module.exports = {
     getAllDonuts,
     createDonut,
-    deleteDonut
+    deleteDonut,
+    updateDonut
 }
