@@ -28,7 +28,22 @@ const createDonut = (req, res) => {
     });
 };
 
+const deleteDonut = (req, res) => {
+    Donut.findByIdAndDelete(req.params.id, (err, deletedDonut) => {
+        if (err) return console.log(err);
+        let response = {
+            status: "success",
+            message: "Donut deleted successfully with id: " + req.params.id,
+            data: {
+                donut: deletedDonut
+            }
+        }
+        res.json(response);
+    });
+};
+
 module.exports = {
     getAllDonuts,
-    createDonut
+    createDonut,
+    deleteDonut
 }
