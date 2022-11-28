@@ -56,9 +56,24 @@ const updateDonut = (req, res) => {
     });
 };
 
+const getDonutById = (req, res) => {
+    Donut.findById(req.params.id, (err, foundDonut) => {
+        if (err) return console.log(err);
+        let response = {
+            status: "success",
+            message: "Donut retrieved successfully with id: " + req.params.id,
+            data: {
+                donut: foundDonut
+            }
+        }
+        res.json(response);
+    });
+};
+
 module.exports = {
     getAllDonuts,
     createDonut,
     deleteDonut,
-    updateDonut
+    updateDonut,
+    getDonutById
 }
