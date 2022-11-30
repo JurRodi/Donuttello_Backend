@@ -19,7 +19,7 @@ const createDonut = (req, res) => {
         if (err) return console.log(err);
         let response = {
             status: "success",
-            message: "New donut created",
+            message: "New donut created successfully with id: " + newDonut._id,
             data: {
                 donut: newDonut
             }
