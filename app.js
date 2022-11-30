@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const rateLimit = require('express-rate-limit')
 
 const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/donuttello', {useNewUrlParser: true});
@@ -22,6 +23,15 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+const limiter = rateLimit({
+	windowMs: 60 * 60 * 1000,
+	max: 50,
+	standardHeaders: true,
+	legacyHeaders: false,
+})
+
+app.use(limiter)
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
