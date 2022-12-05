@@ -34,7 +34,7 @@ const limiter = rateLimit({
 app.use(limiter)
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/API/v1/users', usersRouter);
 app.use('/API/v1/donuts', donutsRouter);
 
 // catch 404 and forward to error handler
