@@ -4,8 +4,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-const rateLimit = require('express-rate-limit')
-var cors = require('cors')
+const rateLimit = require('express-rate-limit');
+var cors = require('cors');
 
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
@@ -21,16 +21,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(cors())
+app.use(cors());
 
 const limiter = rateLimit({
 	windowMs: 60 * 60 * 1000,
 	max: 50,
 	standardHeaders: true,
 	legacyHeaders: false,
-})
+});
 
-app.use(limiter)
+app.use(limiter);
 
 app.use('/API/v1/users', usersRouter);
 app.use('/API/v1/donuts', donutsRouter);
