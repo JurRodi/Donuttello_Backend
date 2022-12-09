@@ -10,16 +10,12 @@ var cors = require('cors')
 const mongoose = require('mongoose');
 mongoose.connect(process.env.MONGO_URI);
 
-var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var donutsRouter = require('./routes/donuts');
 
 var app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
-
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -36,7 +32,6 @@ const limiter = rateLimit({
 
 app.use(limiter)
 
-app.use('/', indexRouter);
 app.use('/API/v1/users', usersRouter);
 app.use('/API/v1/donuts', donutsRouter);
 
