@@ -1,9 +1,9 @@
-var express = require('express');
-var router = express.Router();
-const usersCtrl = require('../controllers/usersCtrl');
-const authenticateToken = require('../middleware/authenticateToken');
+var express = require('express')
+var router = express.Router()
+const usersCtrl = require('../controllers/usersCtrl')
+const authenticateToken = require('../middleware/authenticateToken')
 
-router.post('/login', usersCtrl.login);
-router.post('/changePassword', authenticateToken, usersCtrl.changePassword);
+router.post('/login', usersCtrl.login)
+router.post('/change-password', authenticateToken, usersCtrl.changePassword)
 
-module.exports = router;
+module.exports = router
