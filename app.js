@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(cors())
 
 const limiter = rateLimit({
-  windowMs: 60 * 60 * 1000,
+  windowMs: 10 * 60 * 1000,
   max: 50,
   standardHeaders: true,
   legacyHeaders: false,
