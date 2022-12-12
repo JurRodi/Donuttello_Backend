@@ -4,9 +4,9 @@ const Schema = Mongooose.Schema
 const DonutSchema = new Schema({
   name: { type: String, required: true },
   glace: { type: String, required: true },
-  topping: { type: String, required: true },
+  topping: { type: String, defaul: 'none' },
   logo: { type: String, default: 'none' },
-  shape: { type: String, required: true },
+  shape: { type: String, default: 'none' },
   amount: { type: Number, required: true },
   email: { type: String, required: true },
   company: { type: String, required: true },
