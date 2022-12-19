@@ -16,15 +16,25 @@ const getAllDonuts = (req, res) => {
 
 const createDonut = (req, res) => {
   Donut.create(req.body, (err, newDonut) => {
-    if (err) return console.log(err)
-    let response = {
-      status: 'success',
-      message: 'New donut created successfully with id: ' + newDonut._id,
-      data: {
-        donut: newDonut,
-      },
+    if (err) {
+      let response = {
+        status: 'error',
+        message: 'Donut not created',
+        data: {
+          donut: newDonut,
+        },
+      }
+      return res.json(response)
+    } else {
+      let response = {
+        status: 'success',
+        message: 'New donut created successfully with id: ' + newDonut._id,
+        data: {
+          donut: newDonut,
+        },
+      }
+      res.json(response)
     }
-    res.json(response)
   })
 }
 
